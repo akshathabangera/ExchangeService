@@ -1,6 +1,6 @@
 **********Features****
 Converts currency amounts from one currency code to another
-Uses HttpClientFactory for calling the external ExchangeRate-API - https://open.er-api.com/v6/latest/
+Uses HttpClient singleton object for calling the external ExchangeRate-API - https://open.er-api.com/v6/latest/
 Supports JSON and plain text responses based on the Accept header
 Input validation with data annotations
 Swagger UI for API documentation (in development mode)
@@ -26,11 +26,11 @@ curl -X POST "http://localhost:5000/ExchangeService" \
 -d '{"amount":5,"inputCurrency":"AUD","outputCurrency":"USD"}'
 
 **Areas for Improvement**
-Error Handling & Logging:
+Use HttpCLientFactory or equivalent for better handling of API calls , to avoid socket exhaustion 
 Add comprehensive logging and better exception handling to capture external API failures and internal errors.
 Add authentication/authorization if the API is exposed publicly.
 Input Validation:More rigorous validation like currencycodes
-Caching: Cache exchange rate responses to reduce calls to the external API and improve performance.
-Rate Limiting: Protect the API from abuse by adding throttling or rate limiting.
-Unit and Integration Testing: Add tests covering service layers, controllers, and HttpClient mocking.
+Cache exchange rate responses to reduce calls to the external API and improve performance.
+Protect the API from abuse by adding throttling or rate limiting.
+Add Unit and Integration Testing
 API Versioning to support backward compatibility for clients.
